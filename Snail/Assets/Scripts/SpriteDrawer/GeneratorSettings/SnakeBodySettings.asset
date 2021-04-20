@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4a97a87fd3f874e963396d0e2674dd, type: 3}
+  m_Name: SnakeBodySettings
+  m_EditorClassIdentifier: 
+  width: 8
+  height: 8
+  seed: 178
+  offset: {x: 0, y: 0}
+  grayscale: {x: 0.8, y: 1}
+  perlinScale: 3
+  colors:
+  - color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+    level: -1
+  - color: {r: 0.13751912, g: 1, b: 0, a: 1}
+    level: 0
+  - color: {r: 1, g: 0.6333333, b: 0, a: 1}
+    level: 0.5
+  - color: {r: 0, g: 0.049999714, b: 1, a: 1}
+    level: 0.6
+  pointFilter: 1
+  outline: 1
+  leftOutline: 0
+  rightOutline: 0
+  outlineColors:
+  - color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
+    level: -1
+  - color: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
+    level: 0.5
+  leftRadius: 1
+  rightRadius: 1
+  borderRadius: 5
+  overlayTexture: {fileID: 0}
