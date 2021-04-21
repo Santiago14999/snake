@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 1008992074}
   - component: {fileID: 1008992077}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Snake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -766,10 +766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e14f1f4326617843b8f685855723a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followDistance: 1
-  lastPosition: {x: 0, y: 0}
-  _bodyPart: {fileID: 1177120998393019772, guid: 17b7aa04999f79e419bd4f344f4f0ac1, type: 3}
-  _startBodyPartsAmount: 0
+  _startBodyPartsAmount: 5
+  _pointDistance: 2
+  _partsOffset: 1
 --- !u!114 &1008992075
 MonoBehaviour:
   m_ObjectHideFlags: 0

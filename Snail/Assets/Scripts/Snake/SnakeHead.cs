@@ -4,14 +4,14 @@ using UnityEngine;
 public class SnakeHead : MonoBehaviour
 {
     public float followDistance;
-    public Vector2 lastPosition;
-    [SerializeField] private SnakeBodyPartLerp _bodyPart;
+    [SerializeField] private SnakeBodyPart _bodyPart;
     [SerializeField] private int _startBodyPartsAmount;
 
     private Transform _tail;
     private SnakeSpriteGenerator _generator;
     private int _bodyPartsCount;
     private List<Vector2> _positions;
+    private Vector2 _prevPosition;
 
     private void Start()
     {
@@ -29,10 +29,10 @@ public class SnakeHead : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, lastPosition) >= followDistance)
+        if (Vector2.Distance(transform.position, _prevPosition) >= followDistance)
         {
-            lastPosition = transform.position;
-            _positions.Insert(0, lastPosition);
+            _prevPosition = transform.position;
+            _positions.Insert(0, _prevPosition);
             if (_positions.Count > _bodyPartsCount)
                 _positions.RemoveAt(_positions.Count - 1);
         }
@@ -52,7 +52,7 @@ public class SnakeHead : MonoBehaviour
     public void AddBodyPart()
     {
         Vector2 position = _tail == null ? transform.position : _tail.position;
-        SnakeBodyPartLerp part = Instantiate(_bodyPart, position, Quaternion.identity);
+        SnakeBodyPart part = Instantiate(_bodyPart, position, Quaternion.identity);
         part.nextPart = _tail == null ? transform : _tail;
         part.head = this;
         part.index = _bodyPartsCount;

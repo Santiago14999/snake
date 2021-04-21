@@ -3,39 +3,21 @@ using UnityEngine;
 
 public class SnakeBodyPart : MonoBehaviour
 {
-    [SerializeField] private bool _isHead;
-    [SerializeField] private int _partsDelay;
-    [HideInInspector] public SnakeBodyPart prevPart;
+    [HideInInspector] public SnakeHead head;
+    [HideInInspector] public Transform nextPart;
+    [HideInInspector] public int index;
 
-    public Queue<Vector2> PreviousPositions { get; private set; }
+    private SnakeMovementController _movement;
 
     private void Start()
     {
-        PreviousPositions = new Queue<Vector2>();
+        _movement = head.GetComponent<SnakeMovementController>();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        if (_isHead)
-        {
-            PreviousPositions.Enqueue(transform.position);
-            if (prevPart && PreviousPositions.Count == _partsDelay)
-                prevPart.UpdatePart(PreviousPositions.Dequeue());
-
-            if (PreviousPositions.Count > _partsDelay)
-                PreviousPositions.Dequeue();
-        }
-        
-    }
-
-    public void UpdatePart(Vector2 position)
-    {
-        PreviousPositions.Enqueue(transform.position);
-        transform.position = position;
-        if (prevPart)
-            prevPart.UpdatePart(PreviousPositions.Dequeue());
-
-        if (PreviousPositions.Count > _partsDelay)
-            PreviousPositions.Dequeue();
+        Vector2 direction = transform.position - nextPart.position;
+        transform.position = Vector2.MoveTowards(transform.position, head.GetPositionAt(index), Time.deltaTime * _movement.Speed * direction.magnitude);
+        transform.rotation = Quaternion.Euler(0, 0, 180f + Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
 }

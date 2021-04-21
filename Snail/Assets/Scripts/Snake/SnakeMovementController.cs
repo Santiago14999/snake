@@ -9,6 +9,8 @@ public class SnakeMovementController : MonoBehaviour
     private Vector3 _currentDirection;
     private float _currentSpeed;
 
+    public float Speed { get => _currentSpeed; }
+
     private void Start()
     {
         _currentDirection = Vector2.right;
