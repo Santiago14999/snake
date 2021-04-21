@@ -12,7 +12,6 @@ public class Food : MonoBehaviour
         {
             Destroy(gameObject);
             snake.AddBodyPart();
-            FoodSpawner.Instance.SpawnFood();
         }
     }
 }

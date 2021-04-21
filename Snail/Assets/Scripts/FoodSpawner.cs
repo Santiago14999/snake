@@ -4,6 +4,7 @@ public class FoodSpawner : MonoBehaviour
 {
     [SerializeField] private Food _foodPrefab;
     [SerializeField] private TextureGeneratorSettings _settings;
+    [SerializeField] private Vector2 _mapSize;
 
     private SnakeMovementController _snake;
 
@@ -14,19 +15,28 @@ public class FoodSpawner : MonoBehaviour
     {
         _instance = this;
         _snake = FindObjectOfType<SnakeMovementController>();
-        SpawnFood();
+        for (float y = -_mapSize.y; y < _mapSize.y; y += 10)
+        {
+            for (float x = -_mapSize.x; x < _mapSize.x; x += 10)
+            {
+                Vector2 center = new Vector2(x + 5f, y + 5f);
+                Vector2 direction = Random.insideUnitCircle;
+                for (int i = 0; i < 3; i++)
+                {
+                    SpawnFood(center + direction * Random.Range(1f, 5f));
+                    direction = Quaternion.Euler(0, 0, 120f) * direction;
+                }
+            }
+        }
     }
 
-    public void SpawnFood()
+    public void SpawnFood(Vector2 position)
     {
-        Vector2 snakePosition = new Vector2(_snake.transform.position.x, _snake.transform.position.y);
-        Vector2 foodPosition = snakePosition + Random.insideUnitCircle * 8f;
-
         Texture2D texture = TextureGenerator.GenerateTexture(_settings);
+        _settings.seed = Random.Range(0, int.MaxValue);
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * .5f);
         TextureGenerator.SetRandomLevelColors(_settings.colors);
-        _settings.seed = Random.Range(0, int.MaxValue);
 
-        Instantiate(_foodPrefab, foodPosition, Quaternion.identity).Sprite = sprite;
+        Instantiate(_foodPrefab, position, Quaternion.Euler(0, 0, Random.Range(0, 360f))).Sprite = sprite;
     }
 }

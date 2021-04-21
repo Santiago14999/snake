@@ -696,7 +696,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1008992076}
-  - component: {fileID: 1008992075}
   - component: {fileID: 1008992073}
   - component: {fileID: 1008992072}
   - component: {fileID: 1008992077}
@@ -770,21 +769,6 @@ MonoBehaviour:
   followDistance: 1
   _bodyPart: {fileID: 6538527535393092972, guid: 7ba5fb0d4edb3c84e9ddfb0ec33540c8, type: 3}
   _startBodyPartsAmount: 10
---- !u!114 &1008992075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008992071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ff0b6f86bf36b4bb5b1ce91cf9fdce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 10
-  _speedMultiplier: 2
-  _turnSpeed: 200
 --- !u!4 &1008992076
 Transform:
   m_ObjectHideFlags: 0
