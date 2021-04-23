@@ -5,6 +5,7 @@ public class FoodSpawner : MonoBehaviour
     [SerializeField] private Food _foodPrefab;
     [SerializeField] private TextureGeneratorSettings _settings;
     [SerializeField] private Vector2 _mapSize;
+    [SerializeField] private float _respawnTime;
 
     private SnakeMovementController _snake;
 
@@ -23,7 +24,7 @@ public class FoodSpawner : MonoBehaviour
                 Vector2 direction = Random.insideUnitCircle;
                 for (int i = 0; i < 3; i++)
                 {
-                    SpawnFood(center + direction * Random.Range(1f, 5f));
+                    SpawnFood(center + direction * Random.Range(1f, 6f));
                     direction = Quaternion.Euler(0, 0, 120f) * direction;
                 }
             }
